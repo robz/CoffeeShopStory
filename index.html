@@ -1,109 +1,185 @@
 <html>
-    <p id="story"><a id="John" href="#"></a><a id="Julia" href="#"></a><a id="Angela" href="#"></a></p>
-    <a id="next" href="#">continue</a>
-    </p>
-    <script>
-        (function main() {
-            var timeCount = -1,
-                defaultCharacter = "John",
-                curCharacter = defaultCharacter,
+<p id="story"><a id="John" href="#"></a><a id="Julia" href="#"></a><a id="Angela" href="#"></a></p>
+<a id="next" href="#">continue</a>
+</p>
+<script>
+(function main() {
+    var timeCount = -1,
+        defaultCharacter = "John",
+        curCharacter = defaultCharacter,
 
-                characters = {
-                    John: {
-                        name: "John",
-                        alias: "some guy",
-                        known: false,
-                        stories: [
-                            "After holding the door open for #Angela, John walks into the coffee shop. <br/>\
-                            He immediately takes note of #Julia reading a book in a comfortable chair near the far wall.",
-                            "John's second story",
-                            "John's third story",
-                            "Suddenly the universe collapses!"
-                        ]
-                    },
+        characters = {
+            John: {
+                name: "John",
+                alias: "some guy",
+                known: true,
+                stories: [
+                    "After holding the door open for #Angela, John walks into the coffee shop.<br/>\
+                    He immediately takes note of #Julia reading a book in a comfortable chair near the far wall.",
+                   
+                    "Pretending to ignore her, #John gets in line, takes out his phone, and checks his texts.",
 
-                    Julia: {
-                        name: "Julia",
-                        alias: "the girl",
-                        known: false,
-                        stories: [
-                            "wat",
-                            "Julia's first story",
-                            "Julia's second story",
-                            "Suddenly the universe collapses!"
-                        ]
-                    },
+                    "John has received one text, from #Steven, sent about a minute ago: <em>running late. be there in 5</em><br/>\
+                    He hears someone ordering a chai latte with a triple shot of expresso. \
+                    He steps forward in line, looking up briefly to see #Sara walking away from the counter.<br/>\
+                    Watching the far wall out the corner of his eye, he replies to the text from #Steven.",
 
-                    Angela: {
-                        name: "Angela",
-                        alias: "an elderly woman",
-                        known: false,
-                        stories: [
-                            "wat",
-                            "Angela's first story",
-                            "Angela's second story",
-                            "Suddenly the universe collapses!"
-                        ]
-                    },
-                },
-
-                totalTimeSteps = characters[defaultCharacter].stories.length,
-
-                reset = function () {
-                    timeCount = -1;
-                    curCharacter = defaultCharacter;
-                },
-                
-                setLink = function (name) {
-                    document.getElementById(name).onclick = function () {
-                        curCharacter = name;
-                        step();
-                    };
-                },
-
-                step = function () {
-                    if (timeCount == totalTimeSteps - 1) {
-                        reset();
-                    }
+                    '"SOY MOCHA FOR ANGELA!" shouts #Monica.',
                     
-                    timeCount += 1;
+                    "Suddenly, the universe collapses!"
+                ]
+            },
+
+            Julia: {
+                name: "Julia",
+                alias: "the girl",
+                known: false,
+                stories: [
+                    "wat",
                     
-                    document.getElementById("next").innerHTML = (timeCount == totalTimeSteps - 1) ? "restart" : "continue";
-                    document.getElementById("story").innerHTML = characters[curCharacter].stories[timeCount];
+                    "Julia look up from her book, noticing #John walk into the coffee shop. \
+                    She recongizes him, but can't remember his name. <em>How awkward</em>, she thinks to herself. \
+                    She goes back to her book, pretending to ignore him.",
                     
-                    for (var name in characters) {
-                        if (characters.hasOwnProperty(name)) {
-                            try {
-                                setLink(name);
-                            } catch (e) {}
-                        }
-                    }
-                };
+                    "TODO: Julia 2",
+                    
+                    "TODO: Julia 3",
+                    
+                    "Suddenly, the universe collapses!"
+                ]
+            },
+
+            Angela: {
+                name: "Angela",
+                alias: "an elderly woman",
+                known: false,
+                stories: [
+                    "wat",
+                    
+                    "TODO: Angela 1",
+                    
+                    "TODO: Angela 2",
+                    
+                    "TODO: Angela 3",
+                    
+                    "Suddenly, the universe collapses!"
+                ]
+            },
             
-            // replace hashtag names in the stories with link elements
-            for (var name in characters) {
-                if (characters.hasOwnProperty(name)) {
-                    characters[name].stories.forEach(function (elem, index) {
-                        characters[name].stories[index] = elem.replace(/\#[A-Za-z]+/g, function (match) {
-                            var refname = match.substring(1, match.length);
-                            
-                            if (characters[refname]) {
-                                var n = (characters[refname].known) ? characters[refname].name : characters[refname].alias;
-                                return '<a id="' + refname + '" href="#">' + n + '</a>';
-                            } else {
-                                return match;   
-                            }
-                        });
-                    });
-                }
-            }
+            Steven: {
+                name: "Steven",
+                alias: "a friend",
+                known: false,
+                stories: [
+                    "wat",
+                    
+                    "wat",
+                    
+                    "wat",
+                    
+                    "Steven sits on the couch in his apartment for another moment. His phone vibrate, but he doesn't notice it. \
+                    His eyes droop. He should go meet John. He should get up and drive to that coffee shop. He should...<br/>\
+                    Steven leans back against the cushion on his couch, and falls back asleep.",
+                    
+                    "Suddenly, the universe collapses!"
+                ]
+            },
             
-            document.getElementById("next").onclick = function () {
+            Sara: {
+                name: "Sara",
+                alias: "a very sleep-deprived college student",
+                known: false,
+                stories: [
+                    "wat",
+                    
+                    "wat",
+                    
+                    "wat",
+                    
+                    "Sara walks away from the counter, noticing every minute detail in the shop. \
+                    As she sits down, she wonders what she'll be doing in 10 years, and then considers the state of the human race for a brief moment. \
+                    She smiles for no reason at all, and then rests her head on the stack of textbooks crowding her table. \
+                    She'll just close her eyes for a second, just until her chai latte is ready...",
+                    
+                    "Suddenly, the universe collapses!"
+                ]
+            },
+            
+            Monica: {
+                name: "Monica",
+                alias: "one of the baristas",
+                known: false,
+                stories: [
+                    "wat",
+                    
+                    "wat",
+                    
+                    "wat",
+                    
+                    "wat",
+                    
+                    "Suddenly, the universe collapses!"
+                ]
+            },
+        },
+
+        totalTimeSteps = characters[defaultCharacter].stories.length,
+
+        reset = function () {
+            timeCount = -1;
+            curCharacter = defaultCharacter;
+        },
+        
+        setLink = function (name) {
+            document.getElementById(name).onclick = function () {
+                curCharacter = name;
                 step();
             };
+        },
+
+        step = function () {
+            if (timeCount == totalTimeSteps - 1) {
+                reset();
+            }
             
-            reset();
-            step();
-        })();
-    </script>
+            timeCount += 1;
+            
+            document.getElementById("next").innerHTML = (timeCount == totalTimeSteps - 1) ? "restart" : "continue";
+            document.getElementById("story").innerHTML = characters[curCharacter].stories[timeCount];
+            
+            for (var name in characters) {
+                if (characters.hasOwnProperty(name)) {
+                    try {
+                        setLink(name);
+                    } catch (e) {}
+                }
+            }
+        };
+    
+    // replace hashtag names in the stories with link elements
+    for (var name in characters) {
+        if (characters.hasOwnProperty(name)) {
+            characters[name].stories.forEach(function (elem, index) {
+                characters[name].stories[index] = elem.replace(/\#[A-Za-z]+/g, function (match) {
+                    var refname = match.substring(1, match.length);
+                    
+                    if (characters[refname]) {
+                        var n = (characters[refname].known) ? characters[refname].name : characters[refname].alias;
+                        return '<a id="' + refname + '" href="#">' + n + '</a>';
+                    } else {
+                        return match;   
+                    }
+                });
+            });
+        }
+    }
+    
+    document.getElementById("next").onclick = function () {
+        step();
+    };
+    
+    reset();
+    step();
+})();
+</script>
 </html>
