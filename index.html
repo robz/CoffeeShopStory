@@ -14,17 +14,17 @@
                 alias: "some guy",
                 known: true,
                 stories: [
-                    "After holding the door open for #Angela, John walks into the coffee shop.<br/>\
+                    "After holding the door open for #Angela, John walks into the coffee shop. <br/>\
                     He immediately takes note of #Julia reading a book in a comfortable chair near the far wall.",
                    
-                    "Pretending to ignore her, #John gets in line, takes out his phone, and checks his texts.",
+                    "Pretending to ignore her, John gets in line, takes out his phone, and checks his texts.",
 
                     "John has received one text, from #Steven, sent about a minute ago: <em>running late. be there in 5</em><br/>\
                     He hears someone ordering a chai latte with a triple shot of expresso. \
                     He steps forward in line, looking up briefly to see #Sara walking away from the counter.<br/>\
                     Watching the far wall out the corner of his eye, he replies to the text from #Steven.",
 
-                    '"SOY MOCHA FOR ANGELA!" shouts #Monica.',
+                    '"Soy mocha for %Angela!" shouts #Monica.',
                     
                     "Suddenly, the universe collapses!"
                 ]
@@ -130,6 +130,35 @@
             curCharacter = defaultCharacter;
         },
         
+        replaceHashtagsWithLinks = function (story) {
+            return story.replace(/\#[A-Za-z]+/g, function (match) {
+                var refname = match.substring(1, match.length);
+                
+                if (characters[refname]) {
+                    if (characters[refname].known) {
+                        return '<a id="' + refname + '" href="#">' + characters[refname].name + '</a>';
+                    } else {
+                        return characters[refname].alias;
+                    }
+                } else {
+                    return match;   
+                }
+            });
+        },
+        
+        noteAndReplaceDiscoveries = function (story) {
+            return story.replace(/%[A-Za-z]+/g, function (match) {
+                var refname = match.substring(1, match.length);
+                
+                if (characters[refname]) {
+                    characters[refname].known = true;
+                    return characters[refname].name;
+                } else {
+                    return match;   
+                }
+            });
+        }
+        
         setLink = function (name) {
             document.getElementById(name).onclick = function () {
                 curCharacter = name;
@@ -145,8 +174,12 @@
             timeCount += 1;
             
             document.getElementById("next").innerHTML = (timeCount == totalTimeSteps - 1) ? "restart" : "continue";
-            document.getElementById("story").innerHTML = characters[curCharacter].stories[timeCount];
             
+            var story = characters[curCharacter].stories[timeCount];
+            
+            document.getElementById("story").innerHTML = replaceHashtagsWithLinks(noteAndReplaceDiscoveries(story));
+            
+            // reset link callbacks
             for (var name in characters) {
                 if (characters.hasOwnProperty(name)) {
                     try {
@@ -155,24 +188,6 @@
                 }
             }
         };
-    
-    // replace hashtag names in the stories with link elements
-    for (var name in characters) {
-        if (characters.hasOwnProperty(name)) {
-            characters[name].stories.forEach(function (elem, index) {
-                characters[name].stories[index] = elem.replace(/\#[A-Za-z]+/g, function (match) {
-                    var refname = match.substring(1, match.length);
-                    
-                    if (characters[refname]) {
-                        var n = (characters[refname].known) ? characters[refname].name : characters[refname].alias;
-                        return '<a id="' + refname + '" href="#">' + n + '</a>';
-                    } else {
-                        return match;   
-                    }
-                });
-            });
-        }
-    }
     
     document.getElementById("next").onclick = function () {
         step();
