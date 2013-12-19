@@ -1,0 +1,109 @@
+<html>
+    <p id="story"><a id="John" href="#"></a><a id="Julia" href="#"></a><a id="Angela" href="#"></a></p>
+    <a id="next" href="#">continue</a>
+    </p>
+    <script>
+        (function main() {
+            var timeCount = -1,
+                defaultCharacter = "John",
+                curCharacter = defaultCharacter,
+
+                characters = {
+                    John: {
+                        name: "John",
+                        alias: "some guy",
+                        known: false,
+                        stories: [
+                            "After holding the door open for #Angela, John walks into the coffee shop. <br/>\
+                            He immediately takes note of #Julia reading a book in a comfortable chair near the far wall.",
+                            "John's second story",
+                            "John's third story",
+                            "Suddenly the universe collapses!"
+                        ]
+                    },
+
+                    Julia: {
+                        name: "Julia",
+                        alias: "the girl",
+                        known: false,
+                        stories: [
+                            "wat",
+                            "Julia's first story",
+                            "Julia's second story",
+                            "Suddenly the universe collapses!"
+                        ]
+                    },
+
+                    Angela: {
+                        name: "Angela",
+                        alias: "an elderly woman",
+                        known: false,
+                        stories: [
+                            "wat",
+                            "Angela's first story",
+                            "Angela's second story",
+                            "Suddenly the universe collapses!"
+                        ]
+                    },
+                },
+
+                totalTimeSteps = characters[defaultCharacter].stories.length,
+
+                reset = function () {
+                    timeCount = -1;
+                    curCharacter = defaultCharacter;
+                },
+                
+                setLink = function (name) {
+                    document.getElementById(name).onclick = function () {
+                        curCharacter = name;
+                        step();
+                    };
+                },
+
+                step = function () {
+                    if (timeCount == totalTimeSteps - 1) {
+                        reset();
+                    }
+                    
+                    timeCount += 1;
+                    
+                    document.getElementById("next").innerHTML = (timeCount == totalTimeSteps - 1) ? "restart" : "continue";
+                    document.getElementById("story").innerHTML = characters[curCharacter].stories[timeCount];
+                    
+                    for (var name in characters) {
+                        if (characters.hasOwnProperty(name)) {
+                            try {
+                                setLink(name);
+                            } catch (e) {}
+                        }
+                    }
+                };
+            
+            // replace hashtag names in the stories with link elements
+            for (var name in characters) {
+                if (characters.hasOwnProperty(name)) {
+                    characters[name].stories.forEach(function (elem, index) {
+                        characters[name].stories[index] = elem.replace(/\#[A-Za-z]+/g, function (match) {
+                            var refname = match.substring(1, match.length);
+                            
+                            if (characters[refname]) {
+                                var n = (characters[refname].known) ? characters[refname].name : characters[refname].alias;
+                                return '<a id="' + refname + '" href="#">' + n + '</a>';
+                            } else {
+                                return match;   
+                            }
+                        });
+                    });
+                }
+            }
+            
+            document.getElementById("next").onclick = function () {
+                step();
+            };
+            
+            reset();
+            step();
+        })();
+    </script>
+</html>
