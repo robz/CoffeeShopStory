@@ -1,22 +1,29 @@
 <html>
-<p id="story"><a id="John" href="#"></a><a id="Julia" href="#"></a><a id="Angela" href="#"></a></p>
+<div style="width:700px; height:600px; margin:auto; padding:0px 20px 10px 20px; border-style:solid; border-width:1px;">
+<h3 id="character">John</h3>
+<p id="story"></p>
 <br/>
 <strong><a id="next" href="#"></a></strong>
-
+</div>
 <script>
 (function main() {
     var timeCount = -1,
         defaultCharacter = "John",
-        restartText = "<strong><em>The scene fades, the curtain falls, the credits roll...<br/>And now we begin again!</em></strong>",
         curCharacter = defaultCharacter,
+        restartText = "<strong><em>The scene fades, the curtain falls, the credits roll...</strong>",
+
+        reset = function () {
+            timeCount = -1;
+            curCharacter = defaultCharacter;
+        },
 
         characters = {
             John: {
-                name: "Jonathan",
-                alias: "some guy",
+                name: "John",
+                alias: "some young man",
                 known: false,
                 stories: [
-                    "After holding the door open for #Angela, John walks into the coffee shop. <br/><br/>\
+                    "John holds the door open for #Angela, and then steps into the coffee shop. <br/><br/>\
                     He immediately takes note of #Julia reading a book in a comfortable chair near the far wall.",
                    
                     "Pretending to ignore her, John gets in line, takes out his phone, and checks his texts.",
@@ -28,9 +35,9 @@
 
                     '"Soy mocha for %Angela!" shouts #Monica.',
 
-                    "John steps up to the counter, ready to order, but he's glued to his phone. He fires another couple texts to #Steven as he waits for #Monica to take his order.",
+                    "John steps up to the counter ready to order, but he's glued to his phone. John fires another couple texts to #Steven as #Monica announces that #Sara's latte is ready.",
 
-                    "\"What can I get you?\" The barista startles John. He looks up, but only to glance at her name tag. It says <em>%Monica.</em><br/><br/>\
+                    "\"What can I get you?\" The barista startles John. He looks up, but only to glance at her name tag: <em>%Monica.</em><br/><br/>\
                     \"Uh--I think I'll just have a coffee, please,\" he responds, and hands her a credit card. \"And you can keep a tab open.\"<br/><br/>\
                     He turns, and to his surprise, finds #Julia standing behind him. She looks terrified. \"You poisoned me with a book once,\" she says coldly. \"I'll never forgive you for that.\"<br/><br/>\
                     For the first time in a very long time, John smiles.",
@@ -47,7 +54,7 @@
                     "wat",
                     
                     "Julia looks up from her book, noticing #John walk into the coffee shop. \
-                    She recongizes him, but can't remember his name, nor remember where she met him. Well, this is awkward. \
+                    She recongizes him, but can't remember his name, nor remember where she met him. <em>Well, this is awkward.</em> \
                     She goes back to her book and tries very hard to ignore him.",
                     
                     "For a moment, Julia concentrates on her book. She's very near the end:<br/><br/>\
@@ -58,10 +65,10 @@
                     
                     "Julia looks over at the man by the counter, then quickly back at her book, avoiding the terrible chance of making eye contact. \
                     She then notices someone, a college student from the looks of all the textbooks on her table, talking in her sleep.<br/><br/>\
-                    Julia snaps the book closed. <em>That's it, this is too weird, I have to go say something to him.<br/><br/>\
-                    Whoever he is.</em>",
+                    Julia snaps the book closed. <em>That's it, this is too weird. I have to go say something to him, whoever he is.</em><br/><br/>\
+                    \"Chai latte with a triple shot of espresso on the bar!!!\" screams #Monica, out of breath.",
                     
-                    "Finally, Julia stands up bravely, and walks to the counter. His back facing her, she almost loses her nerve and goes back to her chair. \
+                    "Julia stands up bravely, and walks to the counter. His back facing her, she almost loses her nerve and goes back to her chair. \
                     He turns around and sees her just in time. She panics. Without thinking, she blurts out the passage that she had just been reading.<br/><br/>\
                     He smiles. All of a sudden, she remembers everything.",
                     
@@ -76,11 +83,11 @@
                 stories: [
                     "wat",
                     
-                    "Angela smiles at the young man who held the door for her, but he isn't paying any attention to her--he seems to be \
-                     too distracted by some pretty girl in the back of the cafe. \
+                    "Angela smiles at #John who held the door for her, but he isn't paying any attention to her--he seems to be \
+                     too distracted by #Julia sitting in the back of the cafe. \
                     Angela rolls her eyes and walks to the outdoor seating area.<br/><br/>\
-                    She passes a table where old man Chadwick and his grandson are playing chess. Chadwick winks at her, sucking at a cigar. \
-                    She shudders and thinks, <em>how dreadful!<em/>",
+                    She passes a table where #Chadwick and #Sammy are playing chess. The man winks at her, sucking at a cigar. \
+                    She shudders. <em>how dreadful!<em/>",
                     
                     "Pinching her nose to avoid breathing in the smoke, Angela walks to her table under a large umbrella and sits down. \
                     She opens a newspaper to the 'I-Saw-You' section, where anonymous people send in short descriptions of strangers that they see, \
@@ -89,12 +96,12 @@
                     
                     "Angela hears #Monica call her name from inside the cafe. <em>That was fast!</em>\
                     Just before rising from her table she sees a particularly interesting I-Saw-You post, and pauses to read it:<br><br/>\
-                    \"I was able to catch the 6 because you held the door. You looked beat, it appeared you were on your way home from work. I was standing against the door, you facing me wearing a nice brown coat. We both reached for the pole and our hands touched. We rode one stop to 42nd Str (my stop), as I was leaving I sneezed and even though you didn't know me you blessed me and it was wonderful. I hope to find you. -%Sara\"",
+                    \"I was able to catch the 6 because you held the door. You looked beat, it appeared you were on your way home from work. I was standing against the door, you facing me wearing a nice brown coat. We both reached for the pole and our hands touched. We rode one stop to 42nd (my stop), as I was leaving I sneezed and even though you didn't know me you blessed me and it was wonderful. I hope to find you. -%Sara\"",
                     
-                    "<em>How lovely</em>, Angela thinks. <em>How exquisit.</em> She stares off into space, thinking of youthful romance, and how there always seems to be a tragedy behind beautiful things.",
+                    "<em>How lovely</em>, Angela thinks. <em>How... exquisite!</em> She stares off into space, thinking of youthfulness, and how there always seems to be a tragedy behind all beautiful things.",
 
-                    "Still in a somewhat-sentimental state, Angela gets up from the table and begins walking back into the cafe to pick up her drink, pinching her nose as she goes by Chadwick.",
-                    
+                    "Still in a somewhat-sentimental state, Angela gets up from the table and begins walking back into the cafe to pick up her drink, pinching her nose. As she goes passed the chess match, the old man is staring at the board in awe, his cigar almost falling from his hand. \"That's checkmate, Mr. Chadwick!\" announces #Sammy sitting across from him.",
+
                     restartText
                 ]
             },
@@ -110,7 +117,7 @@
 
                     "wat",
 
-                    "Steven is sitting lethargically on the couch in his apartment. Works seems to take everything out of him these days. His phone vibrates, but he doesn't notice it. \
+                    "Steven is sitting lethargically on the couch in his apartment. Work seems to take everything out of him these days. His phone vibrates, but he doesn't notice it. \
                     His eyes droop. He's supposed to go meet John. He should get up and drive to that coffee shop. He should...<br/><br/>\
                     Steven suddenly remembers how comfortable the cushions on his couch are. He leans against them for a moment, and then immediately falls back asleep.",
 
@@ -141,22 +148,23 @@
                     
                     "wat",
                     
-                    "Sara walks back to her table noticing every minute detail around her, thinking of each as a novel, beautiful thing. \
+                    "Sara walks back to her table noticing every minute detail around her, thinking of each as a novelity. \
                     As she sits down she wonders what she'll be doing in 10 years, and then considers the state of the human race for a brief moment. \
                     She smiles for no reason at all, and then rests her head on the stack of textbooks crowding her table. \
-                    She'll just close her eyes for a second, only until her chai latte is ready...<br/><br/>\
+                    She'll just close her eyes for a second, only until her drink is ready...<br/><br/>\
                     She falls asleep and begins to dream about the man from the train.",
 
                     "It's a very strange dream.<br/><br/>\
-                    Sara is in the coffee shop where she fell asleep, but her body is gone. For some odd reason, she can only see from the perspective of objects that have reflective surfaces. From the shiny cover of a paper-back Picture of Dorian Gray, she spots a young man step up to order something at the counter. The foggy window to the outdoor seating area yields a view of an elderly woman staring off, deeply engrossed in her own mind. From a plastic chess piece, she watches a contemplative young boy.<br/><br/>\
+                    Sara is in the coffee shop where she fell asleep, but her body is gone. For some odd reason, she can only see from the perspective of objects that have reflective surfaces. From the shiny cover of a paper-back Picture of Dorian Gray, she spots #John step up to the counter to order something. The foggy window to the outdoor seating area yields a view of an elderly woman staring off, deeply engrossed in her own mind. From a plastic chess piece, she watches #Sammy sneak a furtive look underneath the table.<br/><br/>\
                     Then, as she swirls around a cup of water from the inside of an ice cube, she sees the man from the train. He's sitting in the chair where she fell asleep, looking perplexed.<br/><br/>\
                     As she watches him (upside-down, since she's still inside the ice cube), he takes out his phone and stares at the dark screen. Apparently, it won't turn on.<br/><br/>\
                     She moves onto the surface of the phone and stares at him longingly. He jumps. He can see her!<br/><br/>\
-                    She smiles nervously up at him from his phone. \"Hi!\" He gawks at her. \"Um... my name is Sara! What's yours?\"<br/><br/>\
-                    Finally, he musters a response: \"Uh. Hi. My name... uh I'm %Steven?\"<br/><br/>\
+                    She smiles nervously up at him from his phone and says, \"Hi!\" He just gawks at her. \"Um... my name is Sara! What's yours?\"<br/><br/>\
+                    There's an awkward pause. Finally, he musters a response: \"Uh. Hi. My name... uh I'm %Steven?\"<br/><br/>\
                     \"Chai latte with a triple shot of espresso on the bar!!!\" screams #Monica, out of breath.",
                     
-                    "Sara jumps awake, staring wildly around her. Slowly, she relaxes, and gets up to grab her drink. <em>No</em>, she thinks to herself as she takes the chai latte from the bar, <em>That couldn't be his name. It was just a dream.</em> She sighs deeply and goes back to studying.",
+                    "Sara jumps awake, staring wildly around her. Slowly, she relaxes, and gets up to grab her drink. <em>No</em>, she thinks to herself as she takes the chai latte from the bar, <em>That couldn't be his name. It was just a dream.</em><br/><br/>\
+                    She sighs deeply and goes back to studying.",
 
                     restartText
                 ]
@@ -175,12 +183,55 @@
                     
                     "wat",
                     
-                    "<em>Poor kids</em>, thinks Monica. <em>Always working so hard, for so little.<em/> She whips up #Sara's requested poison and then calls it out, returning to the counter to take the next customer's order.",
+                    "<em>Poor kids</em>, thinks Monica. <em>Always working so hard, for so little.</em> She whips up #Sara's requested poison and then calls it out, returning to the counter to take the next customer's order.",
                     
-                    "The next person is a young man, fumbling with his phone.<br/><br/>\
+                    "The next person to order is #John, fumbling with his phone.<br/><br/>\
                     \"What can I get you?\"<br/><br/>\
                     \"Uh--I think I'll just have a coffee, thanks\" he responds, and hands her a credit card. \"And you can keep a tab open.\"<br/><br/>\
-                    As Monica takes the his card, she looks at his first name: %John. She writes it onto a piece of paper to keep track of his tab, then turns around to fill a cup of coffee for him.",
+                    As Monica takes the his card, she looks at his first name: %John. She writes it onto a piece of paper to keep track of his tab, \
+                    then turns around to fill a cup of coffee for him.",
+
+                    restartText
+                ]
+            },
+            
+            Chadwick: {
+                name: "Chadwick",
+                alias: "old man",
+                known: false,
+                stories: [
+                    "wat",
+
+                    "wat",
+
+                    "Chadwick TODO 1",
+                    
+                    "Chadwick TODO 2",
+                    
+                    "Chadwick TODO 3",
+                    
+                    "Chadwick TODO 4",
+
+                    restartText
+                ]
+            },
+            
+            Sammy: {
+                name: "Sammy",
+                alias: "a young boy",
+                known: false,
+                stories: [
+                    "wat",
+
+                    "wat",
+
+                    "wat",
+                    
+                    "Sammy TODO 1",
+                    
+                    "Sammy TODO 2",
+                    
+                    "Sammy TODO 3",
 
                     restartText
                 ]
@@ -188,11 +239,6 @@
         },
 
         totalTimeSteps = characters[defaultCharacter].stories.length,
-
-        reset = function () {
-            timeCount = -1;
-            curCharacter = defaultCharacter;
-        },
         
         replaceHashtagsWithLinks = function (story) {
             return story.replace(/\#[A-Za-z]+/g, function (match) {
@@ -237,6 +283,7 @@
             
             timeCount += 1;
             
+            document.getElementById("character").innerHTML = curCharacter + ": " + characters[curCharacter].alias;
             document.getElementById("next").innerHTML = (timeCount == totalTimeSteps - 1) ? "RESTART" : "CONTINUE";
             
             var story = characters[curCharacter].stories[timeCount];
@@ -253,9 +300,7 @@
             }
         };
     
-    document.getElementById("next").onclick = function () {
-        step();
-    };
+    document.getElementById("next").onclick = step;
     
     reset();
     step();
