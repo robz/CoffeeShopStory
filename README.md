@@ -1,7 +1,7 @@
 CoffeeShopStory
 ===============
 
-This is a short story that takes place in a coffee shop and spans only a few minutes. It's told with a simple, semi-interactive method using a time-loop. I wrote it to mess around with the time-loop format. You read the story [here](http://www.cs.utexas.edu/~rjnevels/CoffeeShopStory/).
+This is a short story that takes place in a coffee shop and spans only a few minutes. It's told with a simple, semi-interactive method using a time loop. I wrote it to mess around with the time loop format. You can read the story [here](http://www.cs.utexas.edu/~rjnevels/CoffeeShopStory/).
 
 Check out main.js for an example of how to create stories using storyteller.js.
 
