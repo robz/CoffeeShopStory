@@ -3,14 +3,14 @@
 <h3 id="character">John</h3>
 <p id="story"></p>
 <br/>
-<strong><a id="next" href="#"></a></strong>
+<a id="next" href="#"></a></strong>
 </div>
 <script>
 (function main() {
     var timeCount = -1,
         defaultCharacter = "John",
         curCharacter = defaultCharacter,
-        restartText = "<strong><em>The scene fades, the curtain falls, the credits roll...</strong>",
+        restartText = "<strong><em>The scene fades, the curtain falls, and the credits roll.</strong>",
 
         reset = function () {
             timeCount = -1;
@@ -87,7 +87,7 @@
                      too distracted by #Julia sitting in the back of the cafe. \
                     Angela rolls her eyes and walks to the outdoor seating area.<br/><br/>\
                     She passes a table where #Chadwick and #Sammy are playing chess. The man winks at her, sucking at a cigar. \
-                    She shudders. <em>how dreadful!<em/>",
+                    She shudders. <em>How dreadful!<em/>",
                     
                     "Pinching her nose to avoid breathing in the smoke, Angela walks to her table under a large umbrella and sits down. \
                     She opens a newspaper to the 'I-Saw-You' section, where anonymous people send in short descriptions of strangers that they see, \
@@ -155,7 +155,7 @@
                     She falls asleep and begins to dream about the man from the train.",
 
                     "It's a very strange dream.<br/><br/>\
-                    Sara is in the coffee shop where she fell asleep, but her body is gone. For some odd reason, she can only see from the perspective of objects that have reflective surfaces. From the shiny cover of a paper-back Picture of Dorian Gray, she spots #John step up to the counter to order something. The foggy window to the outdoor seating area yields a view of an elderly woman staring off, deeply engrossed in her own mind. From a plastic chess piece, she watches #Sammy sneak a furtive look underneath the table.<br/><br/>\
+                    Sara is in the coffee shop where she fell asleep, but her body is gone. For some odd reason, she can only see from the perspective of objects that have reflective surfaces. From the shiny cover of a paper-back Picture of Dorian Gray, she spots #John step up to the counter to order something. The foggy window to the outdoor seating area yields a view of an elderly woman staring off into space, deeply engrossed in her own mind. From a plastic chess piece, she watches #Sammy sneak a furtive look underneath the table.<br/><br/>\
                     Then, as she swirls around a cup of water from the inside of an ice cube, she sees the man from the train. He's sitting in the chair where she fell asleep, looking perplexed.<br/><br/>\
                     As she watches him (upside-down, since she's still inside the ice cube), he takes out his phone and stares at the dark screen. Apparently, it won't turn on.<br/><br/>\
                     She moves onto the surface of the phone and stares at him longingly. He jumps. He can see her!<br/><br/>\
@@ -246,7 +246,7 @@
                 
                 if (characters[refname]) {
                     if (characters[refname].known) {
-                        return '<a id="' + refname + '" href="#">' + characters[refname].name + '</a>';
+                        return '<strong><a id="' + refname + '" href="#">' + characters[refname].name + '</a></strong>';
                     } else {
                         return characters[refname].alias;
                     }
@@ -284,7 +284,7 @@
             timeCount += 1;
             
             document.getElementById("character").innerHTML = curCharacter + ": " + characters[curCharacter].alias;
-            document.getElementById("next").innerHTML = (timeCount == totalTimeSteps - 1) ? "RESTART" : "CONTINUE";
+            document.getElementById("next").innerHTML = (timeCount == totalTimeSteps - 1) ? "<strong>Begin again.</strong>" : "Continue...";
             
             var story = characters[curCharacter].stories[timeCount];
             
