@@ -9,7 +9,7 @@ var createStoryTeller = function (spec, my) {
     my.characters = spec.characters;
 
     my.replaceReferences = function (story) {
-        return story.replace(/\#[A-Za-z]+/g, function (match) {
+        return story.replace(/@[A-Za-z]+/g, function (match) {
             var refname = match.substring(1, match.length);
             
             if (my.characters[refname]) {
@@ -96,7 +96,7 @@ var createStoryTeller = function (spec, my) {
     };
     
     // construction
-    document.getElementById(storyElementID).innerHTML = '<h3 id="character"></h3><p id="story"></p><br/><a id="next" href="#"></a></strong>';
+    document.getElementById(storyElementID).innerHTML = '<div id="character"></div><p id="story"></p><br/><a id="next" href="#"></a></strong>';
     document.getElementById("next").onclick = step;
     reset();
     step();
