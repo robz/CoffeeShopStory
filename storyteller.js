@@ -7,6 +7,16 @@ var createStoryTeller = function (spec, my) {
 
     // protected members
     my.characters = spec.characters;
+    
+    my.toParagraphStyle = function (story) {
+        if (typeof story === "string") {
+            return "<p>" + story + "</p>";
+        } else if (Object.prototype.toString.call(story) === "[object Array]") {
+            return "<p>" + story.join("</p><p>") + "</p>";
+        } else {
+            throw "wtf is this story";
+        }
+    };
 
     my.replaceReferences = function (story) {
         return story.replace(/@[A-Za-z]+/g, function (match) {
@@ -88,7 +98,7 @@ var createStoryTeller = function (spec, my) {
             document.getElementById("next").innerHTML = "<strong>Begin again.</strong>";
         } else {
             var story = my.characters[curCharacter].stories[timeCount];
-            document.getElementById("story").innerHTML = my.replaceReferences(my.noteAndReplaceDiscoveries(story));
+            document.getElementById("story").innerHTML = my.replaceReferences(my.noteAndReplaceDiscoveries(my.toParagraphStyle(story)));
             document.getElementById("next").innerHTML = "Continue...";
         }
         
